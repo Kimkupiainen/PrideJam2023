@@ -7,6 +7,7 @@ public class Groundscroller : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] float PlayerVelocity;
     [SerializeField] float accelerationRate;
+    [SerializeField] Animator anim;
     // Start is called before the first frame update
 
     public Transform character;   // Reference to the character's transform
@@ -30,7 +31,7 @@ public class Groundscroller : MonoBehaviour
         transform.position += new Vector3(-movement, 0f, 0f);
 
         // If the ground has scrolled completely, move it back to the starting position
-        if (transform.position.x <= startPosition - groundWidth)
+        if (transform.position.x <= startPosition - groundWidth/2)
         {
             transform.position = new Vector3(startPosition, transform.position.y, transform.position.z);
         }
@@ -38,6 +39,7 @@ public class Groundscroller : MonoBehaviour
         {
             PlayerVelocity -= accelerationRate * Time.deltaTime;
         }
+        anim.speed = PlayerVelocity;
     }
     public void Buttonpress()
     {
