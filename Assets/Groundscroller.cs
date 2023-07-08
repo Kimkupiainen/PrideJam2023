@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Groundscroller : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Groundscroller : MonoBehaviour
     [SerializeField] float PlayerVelocity;
     [SerializeField] float accelerationRate;
     [SerializeField] Animator anim;
+    [SerializeField] TMP_Text scoretext;
+    int score;
+
     // Start is called before the first frame update
 
     public Transform character;   // Reference to the character's transform
@@ -43,6 +47,8 @@ public class Groundscroller : MonoBehaviour
     }
     public void Buttonpress()
     {
+        score++;
         PlayerVelocity += 1;
+        scoretext.text = "SCORE: " + score;
     }
 }
