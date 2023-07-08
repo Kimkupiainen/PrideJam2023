@@ -9,7 +9,6 @@ public class Groundscroller : MonoBehaviour
     // Start is called before the first frame update
 
     public Transform character;   // Reference to the character's transform
-    public float scrollSpeed = 5f;
 
     private float groundWidth;     // Width of the ground sprite
     private float startPosition;   // Starting x-position of the ground
@@ -24,7 +23,7 @@ public class Groundscroller : MonoBehaviour
     private void Update()
     {
         // Calculate the movement based on the character's velocity float value
-        float movement = PlayerVelocity * scrollSpeed * Time.deltaTime;
+        float movement = PlayerVelocity * Time.deltaTime;
 
         // Scroll the ground in the opposite direction of the character's velocity
         transform.position += new Vector3(-movement, 0f, 0f);
@@ -34,5 +33,9 @@ public class Groundscroller : MonoBehaviour
         {
             transform.position = new Vector3(startPosition, transform.position.y, transform.position.z);
         }
+    }
+    public void Buttonpress()
+    {
+        PlayerVelocity += 1;
     }
 }
