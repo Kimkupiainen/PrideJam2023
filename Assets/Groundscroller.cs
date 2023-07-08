@@ -6,6 +6,7 @@ public class Groundscroller : MonoBehaviour
 {
     [SerializeField] GameObject Player;
     [SerializeField] float PlayerVelocity;
+    [SerializeField] float accelerationRate;
     // Start is called before the first frame update
 
     public Transform character;   // Reference to the character's transform
@@ -32,6 +33,10 @@ public class Groundscroller : MonoBehaviour
         if (transform.position.x <= startPosition - groundWidth)
         {
             transform.position = new Vector3(startPosition, transform.position.y, transform.position.z);
+        }
+        if (PlayerVelocity != 0)
+        {
+            PlayerVelocity -= accelerationRate * Time.deltaTime;
         }
     }
     public void Buttonpress()
